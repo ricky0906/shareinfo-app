@@ -1,24 +1,50 @@
-# README
+# DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column     | Type   | Options     |
+| ---------- | ------ | ----------- |
+| nickname   | string | null: false |
+| email      | string | null: false |
+| password   | string | null: false |
+| first_name | string | null: false |
+| last_name  | string | null: false |
 
-* Ruby version
+### association
+- has_many :memos
+- has_many :room_users
+- has_many :rooms, through: room_users
 
-* System dependencies
+## memosテーブル
 
-* Configuration
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| content | string     |                                |
+| user    | references | null: false, foreign_key: true |
+| room    | references | null: false, foreign_key: true |
 
-* Database creation
+### association
+- belongs_to :user
+- belongs_to :room
 
-* Database initialization
+## roomsテーブル
 
-* How to run the test suite
+| Column | Type   | Options       |
+| ------ | ------ | ------------- |
+| name   | string | null: false   |  
 
-* Services (job queues, cache servers, search engines, etc.)
+### association
+- has_many :memos
+- has_many :users, through: room_users
+- has_many :room_users
 
-* Deployment instructions
+## room_usersテーブル
 
-* ...
+| Column | Type       |  Options                       |
+| ------ | ---------- | ------------------------------ |
+| room   | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
+
+### association
+- belongs_to :user
+- belongs_to :room
