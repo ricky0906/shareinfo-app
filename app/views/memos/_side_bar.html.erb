@@ -8,29 +8,11 @@
 </div>
 
 <div class="rooms">
-  <div class="room">
-    <div class="room-name">
-      <a href="#">キャンプ</a>
+  <% @rooms.each do |room| %>
+    <div class="room">
+      <div class="room-name">
+        <a href="#"><%= room.name %></a>
+      </div>
     </div>
-  </div>
-  <div class="room">
-    <div class="room-name">
-      <a href="#">クロージング</a>
-    </div>
-  </div>
-  <div class="room">
-    <div class="room-name">
-      <a href="#">FG</a>
-    </div>
-  </div>
-  <div class="room">
-    <div class="room-name">
-      <a href="#">フィッシング</a>
-    </div>
-  </div>
-  <div class="room">
-    <div class="room-name">
-      <a href="#">その他</a>
-    </div>
-  </div>
+  <% end %>
 </div>
