@@ -13,6 +13,7 @@ class MemosController < ApplicationController
       redirect_to room_memos_path(@room)
     else
       @memos = @room.memos.includes(:user)
+      @rooms = Room.all
       render :index
     end
   end
