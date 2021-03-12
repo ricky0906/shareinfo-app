@@ -2,6 +2,7 @@ class MemosController < ApplicationController
   def index
     @memo = Memo.new
     @room = Room.find(params[:room_id])
+    @memos = @room.memos.includes(:user)
     @rooms = Room.all
   end
 
@@ -11,6 +12,7 @@ class MemosController < ApplicationController
     if @memo.save
       redirect_to room_memos_path(@room)
     else
+      @memos = @room.memos.includes(:user)
       render :index
     end
   end
