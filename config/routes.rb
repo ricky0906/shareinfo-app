@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get 'memos/index'
   root to: "memos#index"
   resources :users, only: [:edit, :update]
+  resources :rooms
 end
