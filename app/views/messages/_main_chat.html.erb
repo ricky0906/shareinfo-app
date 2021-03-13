@@ -12,15 +12,15 @@
 </div>
 
 <div class="messages">
-  <%= render partial: 'message', collection: @memos %>
+  <%= render partial: 'message', collection: @messages %>
 </div>
 
-<%= form_with model: [@room, @memo], class: 'form', local: true do |f| %>
+<%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
   <div class="form-input">
     <%= f.text_field :content, class: 'form-message', placeholder: 'type a messeage' %>
     <label class="form-image">
       <span class="image-file">画像</span>
-      <%= f.text_field :image, class: 'hidden' %>
+      <%= f.file_field :image, class: 'hidden' %>
     </label>
   </div>
   <%= f.submit '送信', class: 'form-submit' %>
