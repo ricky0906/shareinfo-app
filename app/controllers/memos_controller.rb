@@ -21,6 +21,6 @@ class MemosController < ApplicationController
   private
 
   def memo_params
-    params.require(:memo).permit(:content).merge(user_id: current_user.id)
+    params.require(:memo).permit(:content, :image).merge(user_id: current_user.id)
   end
 end
