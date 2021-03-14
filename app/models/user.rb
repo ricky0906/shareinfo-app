@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  with_options on: :create do    
+  with_options on: :create do
     PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
     validates_format_of :password, with: PASSWORD_REGEX, message: 'は半角英数字混合で入力してください'
     validates :password, length: { minimum: 6 }
@@ -13,7 +13,7 @@ class User < ApplicationRecord
     validates :first_name
     validates :last_name
   end
-  
+
   has_many :room_users
   has_many :rooms, through: :room_users
   has_many :messages
